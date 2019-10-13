@@ -1,0 +1,77 @@
+import unittest
+from Xand0 import game
+
+
+class TestGame(unittest.TestCase):
+
+    def test_1(self):
+        game_1 = game()
+        game_1.turn(1)
+        print('\n')
+        game_1.turn(2)
+        print('\n')
+        game_1.turn(3)
+        print('\n')
+        game_1.turn(4)
+        print('\n')
+        game_1.turn(5)
+        self.assertEqual(game_1.victory(), False)
+        print('\n')
+        game_1.turn(6)
+        self.assertEqual(game_1.victory(), False)
+        print('\n')
+        game_1.turn(8)
+        self.assertEqual(game_1.victory(), False)
+        print('\n')
+        game_1.turn(7)
+        self.assertEqual(game_1.victory(), False)
+        print('\n')
+        game_1.turn(9)
+        self.assertEqual(game_1.victory(), True)
+        print('\n\n')
+
+    def test_2(self):
+        game_2 = game()
+        print('\n')
+        game_2.turn(1)
+        print('\n')
+        game_2.turn(4)
+        print('\n')
+        game_2.turn(2)
+        print('\n')
+        game_2.turn(5)
+        print('\n')
+        game_2.turn(3)
+        print('\n')
+        self.assertEqual(game_2.victory(), True)
+        print('\n\n')
+
+    def test_3(self):
+        game_3 = game()
+        print('\n')
+        game_3.turn(1)
+        print('\n')
+        game_3.turn(4)
+        print('\n')
+        game_3.turn(2)
+        print('\n')
+        self.assertEqual(game_3.victory(), False)
+        game_3.turn(5)
+        print('\n')
+        game_3.turn(6)
+        print('\n')
+        game_3.turn(3)
+        self.assertEqual(game_3.victory(), False)
+        print('\n')
+        game_3.turn(7)
+        print('\n')
+        game_3.turn(8)
+        print('\n')
+        game_3.turn(9)
+        self.assertEqual(game_3.victory(), False)
+        self.assertEqual(game_3.draw(), True)
+        print('\n\n')
+
+
+if __name__ == "__main__":
+    unittest.main()
