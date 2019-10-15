@@ -43,6 +43,21 @@ class game:
         print('\n\n')
         print('The 1st player will start with crosses')
         print('The 2nd player will play with zeroes', end='\n\n')
+        while not self.victory():
+            try:
+                pos = int(input('Select a number from 1-9 to put X or 0: '))
+                print('\n')
+                self.turn(pos)
+                if self.draw() is True:
+                    break
+            except ValueError:
+                print('\n')
+                print('INPUT a number from 1-9', end='\n\n')
+            except Exception:
+                print('Choose another cell from remaining', end='\n')
+                print('or', end='\n')
+                print('INPUT a number from 1-9', end='\n')
+                print('\n\n\n')
 
     def print_game(self):
         for row in self.game_map:
@@ -90,22 +105,3 @@ class game:
                 print('0 won! CONGRATULATIONS!!!!!')
                 return True
         return False
-
-
-Game = game()
-Game.start()
-while not Game.victory():
-    try:
-        pos = int(input('Select a number from 1-9 to put X or 0: '))
-        print('\n')
-        Game.turn(pos)
-        if Game.draw() is True:
-            break
-    except ValueError:
-        print('\n')
-        print('INPUT a number from 1-9', end='\n\n')
-    except Exception:
-        print('Choose another cell from remaining', end='\n')
-        print('or', end='\n')
-        print('INPUT a number from 1-9', end='\n')
-        print('\n\n\n')
