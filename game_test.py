@@ -1,11 +1,11 @@
 import unittest
-from Xand0 import game
+from Xand0 import Game
 
 
 class TestGame(unittest.TestCase):
 
     def test_1(self):
-        game_1 = game()
+        game_1 = Game()
         game_1.turn(1)
         print('\n')
         game_1.turn(2)
@@ -31,7 +31,7 @@ class TestGame(unittest.TestCase):
         print('\n\n')
 
     def test_2(self):
-        game_2 = game()
+        game_2 = Game()
         print('\n')
         game_2.turn(1)
         print('\n')
@@ -47,7 +47,7 @@ class TestGame(unittest.TestCase):
         print('\n\n')
 
     def test_3(self):
-        game_3 = game()
+        game_3 = Game()
         print('\n')
         game_3.turn(1)
         print('\n')

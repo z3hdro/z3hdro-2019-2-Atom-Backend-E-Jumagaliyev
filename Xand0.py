@@ -1,4 +1,4 @@
-class game:
+class Game:
     def __init__(self):
         self.game_map = [
             '   |   |   ',
@@ -105,3 +105,8 @@ class game:
                 print('0 won! CONGRATULATIONS!!!!!')
                 return True
         return False
+
+
+if __name__ == '__main__':
+    game = Game()
+    game.start()
