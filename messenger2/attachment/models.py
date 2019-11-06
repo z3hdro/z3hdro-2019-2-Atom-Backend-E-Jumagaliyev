@@ -10,3 +10,7 @@ class Attachment(models.Model):
     message = models.ForeignKey(Message, on_delete=models.SET_NULL, null=True, verbose_name='Сообщение')
     type_attachment = models.CharField('Тип Прикрепления',max_length=12)
     url = models.CharField('Ссылка',max_length=200)
+
+    class Meta:
+        verbose_name = 'Прикрепление'
+        verbose_name_plural = 'Прикрепления'
