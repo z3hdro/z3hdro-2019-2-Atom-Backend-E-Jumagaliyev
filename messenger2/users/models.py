@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 class User(AbstractUser):
-    pass
+    avatar = models.CharField('img', null=True, max_length=32)
 
     class Meta:
         verbose_name = 'Пользователь'
