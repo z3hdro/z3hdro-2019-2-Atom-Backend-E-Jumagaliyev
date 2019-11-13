@@ -1,28 +1,26 @@
 from django.shortcuts import render
 from chats.models import Chat
+from chats.forms import ChatForm
 from django.http import JsonResponse
 from django.http import HttpResponseNotAllowed
 from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 @csrf_exempt
-def create_chat(request, is_group_chat, topic, last_message):
-    if request.method == 'POST':
-        if (is_group_chat == 0):
-            is_group_chat = False
-        elif (is_group_chat == 1):
-            is_group_chat = True
-        else:
-            return JsonResponse({'error':'Invalid Syntax for is_group_chat'})
-        Chat(is_group_chat = is_group_chat, topic = topic, last_message = last_message).save()
-        return JsonResponse({'Result':'Well Done!'})
-    return HttpResponseNotAllowed(['POST'])
+def create_chat(request):
+    form = ChatForm(request.POST)
+    if form.is_valid():
+        chat = form.save()
+        return JsonResponse({
+            'Result':'Chat created',
+            'id': chat.id
+        })
+    return JsonResponse({'error': form.errors}, status=400)
 
 
 @csrf_exempt
-def show_all(request):
+def show_all_chats(request):
     if request.method == 'GET':
         data = Chat.objects.all().order_by('id').values()
         return JsonResponse({'result': list(data)})
     return HttpResponseNotAllowed(['GET'])
-    
