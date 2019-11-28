@@ -37,14 +37,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
+    'rest_framework',
     'users',
     'chats',
     'members',
     'message',
     'attachment',
+
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -122,11 +126,20 @@ USE_L10N = True
 
 USE_TZ = True
 
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+AWS_S3_ENDPOINT_URL = 'http://hb.bizmrg.com'
+AWS_ACCESS_KEY_ID = 'ns3JMEzqS7GkxRcCuvRDVh'
+AWS_SECRET_ACCESS_KEY = '8DvkXKZkUdebaEkBfnyGKhJBZaMaW4ybJdxwiN2WzeEv'
+AWS_STORAGE_BUCKET_NAME = 'z3hdro_messenger'
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = '/home/eldar/Desktop/z3hdro-2019-2-Atom-Backend-E-Jumagaliyev/messenger/media'
 
 try:
     from .local_settings import *
@@ -134,3 +147,13 @@ except ImportError:
     pass
 
 AUTH_USER_MODEL = "users.User"
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
