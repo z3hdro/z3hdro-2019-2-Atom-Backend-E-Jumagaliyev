@@ -1,7 +1,8 @@
 from django import forms
-from message.models import Message
 
-class MessageForm(forms.ModelForm):
-    class Meta:
-        model = Message
-        fields = ['chat', 'user', 'content', 'added_at']
+class MessageForm(forms.Form):
+    chat_id = forms.CharField()
+    content = forms.CharField(required=False)
+    attachment_type = forms.CharField()
+    geolocation_url = forms.CharField(required=False)
+    media = forms.FileField(required=False)

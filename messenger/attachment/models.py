@@ -8,7 +8,7 @@ class Attachment(models.Model):
     chat = models.ForeignKey(Chat, on_delete=models.SET_NULL, null=True, verbose_name='Диалог')
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, verbose_name='Пользователь')
     message = models.ForeignKey(Message, on_delete=models.SET_NULL, null=True, verbose_name='Сообщение')
-    type_attachment = models.CharField('Тип Прикрепления',max_length=12)
+    type_attachment = models.CharField('Тип Прикрепления',max_length=20)
     url = models.CharField('Ссылка',max_length=200)
 
     class Meta:

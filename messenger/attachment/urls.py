@@ -1,7 +1,6 @@
 from django.urls import path
-from attachment.views import create_attachment, show_all_attachments
+from attachment.views import create_attachment
 
 urlpatterns = [
-    path('createattachment/', create_attachment, name='create_attachment'),
-    path('showattachemnts/', show_all_attachments, name='show_all_attachments')
+    path('createattachment/', create_attachment, name='create_attachment')
 ]

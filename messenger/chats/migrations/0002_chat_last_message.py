@@ -9,14 +9,14 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('members', '0001_initial'),
+        ('chats', '0001_initial'),
         ('message', '0001_initial'),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='member',
-            name='last_read_message',
-            field=models.OneToOneField(null=True, on_delete=django.db.models.deletion.SET_NULL, to='message.Message', verbose_name='Последнее прочитанное сообщение'),
+            model_name='chat',
+            name='last_message',
+            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='message.Message', verbose_name='Диалог'),
         ),
     ]

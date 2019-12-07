@@ -4,7 +4,7 @@ from django.db import models
 class Chat(models.Model):
     is_group_chat = models.BooleanField('Групповой чат')
     topic = models.CharField('Заголовок',max_length=64)
-    last_message = models.TextField('Последнее сообщение')
+    last_message = models.TextField('Последнее Сообщение', null=True)
 
     class Meta:
         verbose_name = 'Диалог'
